@@ -1,2 +1,4 @@
 *main
 *settings.json
+*.out
+.vscode
