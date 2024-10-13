@@ -2,6 +2,7 @@
 #include    <string>
 #include    <random>
 #include    "constants.hpp"
+#include    "background.hpp"
 
 using namespace std::literals;
 
@@ -54,6 +55,7 @@ int main(int argc, char const *argv[])
     sf::RenderWindow game_window({constants::window_width, constants::window_height}, "Test"s);
     game_window.setFramerateLimit(60);
     creature ball(constants::ballx, constants::bally);
+    background bg(0.0f, 0.0f);
 
     while (game_window.isOpen())
     {
@@ -76,6 +78,7 @@ int main(int argc, char const *argv[])
             }
         }
         ball.update();
+        bg.draw(game_window);
         ball.draw(game_window);
         game_window.display();   
     }
