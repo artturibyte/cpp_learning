@@ -5,7 +5,7 @@ sf::Texture background::texture;
 
 background::background(float x, float y): entity() {
     // load the texture
-    texture.loadFromFile("/home/artturi/projects/cpp_learning/breakout_game_project/background.jpg");
+    texture.loadFromFile("background.jpg");
 
     sprite.setTexture(texture);
 
