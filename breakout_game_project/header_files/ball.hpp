@@ -4,7 +4,7 @@
 #include    "constants.hpp"
 #include    "entity.hpp"
 
-class ball: moving_entity {
+class ball: public moving_entity {
     private:
     static sf::Texture texture;
 
@@ -20,6 +20,10 @@ class ball: moving_entity {
     // Implement pure virtual functions of entity
     void update() override;
     void draw(sf::RenderWindow& window) override;
+
+    void move_up() noexcept;
+    void move_left() noexcept;
+    void move_right() noexcept;
 };
 
 #endif

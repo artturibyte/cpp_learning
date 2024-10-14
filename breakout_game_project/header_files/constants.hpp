@@ -9,7 +9,7 @@ struct constants
     static constexpr int paddle_height{20};
     static constexpr int paddle_speed{5};
 
-    static constexpr float ball_speed{1.0f};
+    static constexpr float ball_speed{2.0f};
 };
 
 

@@ -18,6 +18,9 @@ class paddle: public moving_entity {
     // input from player
     void process_player_input();
 
+    void move_up() noexcept;
+    void move_left() noexcept;
+    void move_right() noexcept;
 };
 
 

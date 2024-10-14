@@ -5,6 +5,7 @@
 #include    "background.hpp"
 #include    "ball.hpp"
 #include    "paddle.hpp"
+#include    "interactions.hpp"
 
 using namespace std::literals;
 
@@ -36,8 +37,13 @@ int main(int argc, char const *argv[])
                 break;
             }
         }
+
+        // Calculate directions
         ball.update();
         paddle.update();
+        handle_collision(ball, paddle);
+
+        // Draw new frame
         bg.draw(game_window);
         ball.draw(game_window);
         paddle.draw(game_window);

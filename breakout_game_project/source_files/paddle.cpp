@@ -29,7 +29,7 @@ void paddle::draw(sf::RenderWindow& window) {
 void paddle::process_player_input() {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) {
         if (x() >= 0) {
-            velocity.x = -constants::paddle_speed;
+            move_left();
         }
         else {
             velocity.x = 0;
@@ -37,7 +37,7 @@ void paddle::process_player_input() {
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) {
         if (x() <= constants::window_width) {
-            velocity.x = constants::paddle_speed;
+            move_right();
         }
         else {
             velocity.x = 0;
@@ -46,5 +46,15 @@ void paddle::process_player_input() {
     else {
         velocity.x = 0;
     }
+}
 
+void paddle::move_up() noexcept {
+}
+
+void paddle::move_left() noexcept {
+    velocity.x = -constants::paddle_speed;
+}
+
+void paddle::move_right() noexcept {
+    velocity.x = constants::paddle_speed;
 }
