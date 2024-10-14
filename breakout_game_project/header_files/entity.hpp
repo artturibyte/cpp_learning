@@ -27,7 +27,10 @@ class moving_entity: public entity
 {
     protected:
     sf::Vector2f velocity;
-};
 
+    virtual void move_up() noexcept = 0;
+    virtual void move_left() noexcept = 0;
+    virtual void move_right() noexcept = 0;
+};
 
 #endif
