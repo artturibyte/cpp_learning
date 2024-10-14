@@ -3,9 +3,13 @@
 
 struct constants
 {
-    static constexpr int window_height{850};
-    static constexpr int window_width{1020};
-    static constexpr int ballx{200}, bally{200};
+    static constexpr int window_height{544};
+    static constexpr int window_width{1152};
+
+    static constexpr int paddle_height{20};
+    static constexpr int paddle_speed{5};
+
+    static constexpr float ball_speed{1.0f};
 };
 
 
