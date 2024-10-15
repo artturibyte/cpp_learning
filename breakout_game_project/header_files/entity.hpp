@@ -5,6 +5,7 @@
 
 // abstract baseclass to represent all graphical entities on screen
 class entity{
+    bool destroyed{false};
     protected:
     sf::Sprite sprite;
     public:
@@ -16,6 +17,15 @@ class entity{
 
     // Helper function to get the centre of a sprite
     [[nodiscard]] sf::Vector2f get_center() const noexcept;
+
+    // Helper functions to get the edges of the sprite
+    float left() const noexcept;
+    float right() const noexcept;
+    float top() const noexcept;
+    float bottom() const noexcept;
+
+    void destroy() noexcept;
+    bool is_destroyed() const noexcept;
 
     [[nodiscard]] float x() const noexcept;
     [[nodiscard]] float y() const noexcept;
@@ -31,6 +41,7 @@ class moving_entity: public entity
     virtual void move_up() noexcept = 0;
     virtual void move_left() noexcept = 0;
     virtual void move_right() noexcept = 0;
+    virtual void move_down() noexcept = 0;
 };
 
 #endif

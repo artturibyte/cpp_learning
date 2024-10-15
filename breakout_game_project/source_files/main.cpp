@@ -15,7 +15,7 @@ int main(int argc, char const *argv[])
 {
     sf::RenderWindow game_window({constants::window_width, constants::window_height}, "Test"s);
     game_window.setFramerateLimit(60);
-    ball ball(0, 0);
+    ball ball(constants::window_width/2, constants::window_height/2);
     paddle paddle(0, constants::window_height);
     background bg(0, 0);
 
@@ -63,7 +63,18 @@ int main(int argc, char const *argv[])
         // Calculate directions
         ball.update();
         paddle.update();
+
+        // Handle collisions
         handle_collision(ball, paddle);
+
+        for (auto& b : brick_vec)
+            handle_collision(ball, b);
+        
+        // Erase destroyed bricks
+        brick_vec.erase(
+            std::remove_if(begin(brick_vec), end(brick_vec), 
+                [](const brick& b){ return b.is_destroyed();}), 
+            end(brick_vec));
 
         // Draw new frame
         bg.draw(game_window);

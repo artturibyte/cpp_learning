@@ -48,8 +48,9 @@ void paddle::process_player_input() {
     }
 }
 
-void paddle::move_up() noexcept {
-}
+void paddle::move_up() noexcept {}
+
+void paddle::move_down() noexcept {}
 
 void paddle::move_left() noexcept {
     velocity.x = -constants::paddle_speed;
@@ -58,3 +59,4 @@ void paddle::move_left() noexcept {
 void paddle::move_right() noexcept {
     velocity.x = constants::paddle_speed;
 }
+
