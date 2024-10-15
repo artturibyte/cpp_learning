@@ -6,7 +6,6 @@
 class brick: public entity {
     private:
     static sf::Texture texture;
-    bool destroyed{false};
 
     public:
     // constructors
