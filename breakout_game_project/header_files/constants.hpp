@@ -12,9 +12,9 @@ struct constants
     static constexpr float ball_speed{3.0f};
 
     static constexpr int brick_height{20};
-    static constexpr int brick_width{42};
-    static constexpr int brick_offset{brick_width/2};
-    static constexpr int brick_colums{25};
+    static constexpr int brick_width{69};
+    static constexpr int brick_offset{0};
+    static constexpr int brick_colums{16};
     static constexpr int brick_rows{15};
 };
 

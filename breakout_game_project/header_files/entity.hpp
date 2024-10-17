@@ -4,7 +4,7 @@
 
 
 // abstract baseclass to represent all graphical entities on screen
-class entity{
+class Entity{
     bool destroyed{false};
     protected:
     sf::Sprite sprite;
@@ -30,10 +30,10 @@ class entity{
     [[nodiscard]] float x() const noexcept;
     [[nodiscard]] float y() const noexcept;
 
-    virtual ~entity() {};
+    virtual ~Entity() {};
 };
 
-class moving_entity: public entity
+class Moving_entity: public Entity
 {
     protected:
     sf::Vector2f velocity;

@@ -3,7 +3,7 @@
 // initialize static data
 sf::Texture background::texture;
 
-background::background(float x, float y): entity() {
+background::background(float x, float y): Entity() {
     // load the texture
     texture.loadFromFile("background.jpg");
 

@@ -1,11 +1,11 @@
 #include    "brick.hpp"
 
 //Initialize static data
-sf::Texture brick::texture;
+sf::Texture Brick::texture;
 
-brick::brick(float x, float y) {
+Brick::Brick(float x, float y) {
     // load texture
-    texture.loadFromFile("brick01.png");
+    texture.loadFromFile("beer-bottle.png");
     sprite.setTexture(texture);
 
     // Set initial positions & velocity
@@ -13,10 +13,10 @@ brick::brick(float x, float y) {
     sprite.setOrigin(get_center());
 }
 
-void brick::update() {
+void Brick::update() {
     
 }
 
-void brick::draw(sf::RenderWindow& window){
+void Brick::draw(sf::RenderWindow& window){
     window.draw(sprite);
 }

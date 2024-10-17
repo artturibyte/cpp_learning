@@ -1,9 +1,9 @@
 #include    "paddle.hpp"
 #include    "constants.hpp"
 
-sf::Texture paddle::texture;
+sf::Texture Paddle::texture;
 
-paddle::paddle(float x, float y) {
+Paddle::Paddle(float x, float y) {
     texture.loadFromFile("paddle.png");
     sprite.setTexture(texture);
     sprite.setPosition(x, y - constants::paddle_height);
@@ -13,12 +13,12 @@ paddle::paddle(float x, float y) {
     sprite.setOrigin(get_center());
 }
 
-void paddle::update() {
-    paddle::process_player_input();
+void Paddle::update() {
+    Paddle::process_player_input();
     sprite.move(velocity);
 }
 
-void paddle::draw(sf::RenderWindow& window) {
+void Paddle::draw(sf::RenderWindow& window) {
     window.draw(sprite);
 }
 
@@ -26,7 +26,7 @@ void paddle::draw(sf::RenderWindow& window) {
 // Process player keyboard input
 // Left arrow key, negative velocity
 // Right arrow key, positive velocity
-void paddle::process_player_input() {
+void Paddle::process_player_input() {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) {
         if (x() >= 0) {
             move_left();
@@ -48,15 +48,15 @@ void paddle::process_player_input() {
     }
 }
 
-void paddle::move_up() noexcept {}
+void Paddle::move_up() noexcept {}
 
-void paddle::move_down() noexcept {}
+void Paddle::move_down() noexcept {}
 
-void paddle::move_left() noexcept {
+void Paddle::move_left() noexcept {
     velocity.x = -constants::paddle_speed;
 }
 
-void paddle::move_right() noexcept {
+void Paddle::move_right() noexcept {
     velocity.x = constants::paddle_speed;
 }
 

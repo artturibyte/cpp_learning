@@ -3,13 +3,13 @@
 
 #include    "entity.hpp"
 
-class paddle: public moving_entity {
+class Paddle: public Moving_entity {
     private:
     static sf::Texture texture;
 
     public:
     // Initial position of the paddle
-    paddle(float x, float y);
+    Paddle(float x, float y);
 
     // Implement pure virtual functions of entity
     void update() override;
