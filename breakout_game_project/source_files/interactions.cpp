@@ -1,13 +1,13 @@
 #include    "interactions.hpp"
 
-bool is_interacting(const entity& e1, const entity& e2) {
+bool is_interacting(const Entity& e1, const Entity& e2) {
     auto box1 = e1.get_bounding_box();
     auto box2 = e2.get_bounding_box();
     return box1.intersects(box2);
 }
 
 // resolve collisions with paddle & ball
-void handle_collision(ball& b, const paddle& p) {
+void handle_collision(Ball& b, const Paddle& p) {
     if (is_interacting(p, b)) {
         b.move_up();
 
@@ -21,7 +21,7 @@ void handle_collision(ball& b, const paddle& p) {
     }
 };
 
-void handle_collision(ball& bl, brick& br) {
+void handle_collision(Ball& bl, Brick& br) {
     if (is_interacting(bl, br)) {
         // Destroy the brick in collision
         br.destroy();

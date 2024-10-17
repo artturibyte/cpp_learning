@@ -3,13 +3,13 @@
 
 #include    "entity.hpp"
 
-class brick: public entity {
+class Brick: public Entity {
     private:
     static sf::Texture texture;
 
     public:
     // constructors
-    brick(float x, float y);
+    Brick(float x, float y);
 
     void update() override;
     void draw(sf::RenderWindow& window) override;

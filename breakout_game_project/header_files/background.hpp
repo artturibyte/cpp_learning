@@ -3,7 +3,7 @@
 #include    <SFML/Graphics.hpp>
 #include    "entity.hpp"
 
-class background: public entity {
+class background: public Entity {
     private:
     static sf::Texture texture;
     public:

@@ -1,36 +1,36 @@
 #include    "entity.hpp"
 
-sf::FloatRect entity::get_bounding_box() const noexcept {
+sf::FloatRect Entity::get_bounding_box() const noexcept {
     return sprite.getGlobalBounds();
 }
 
-sf::Vector2f entity::get_center() const noexcept {
+sf::Vector2f Entity::get_center() const noexcept {
     auto box = get_bounding_box();
     return {box.width/2, box.height/2};
 }
 
-bool entity::is_destroyed() const noexcept {return destroyed;}
-void entity::destroy() noexcept {destroyed = true;}
+bool Entity::is_destroyed() const noexcept {return destroyed;}
+void Entity::destroy() noexcept {destroyed = true;}
 
-float entity::left() const noexcept {
+float Entity::left() const noexcept {
     auto box = get_bounding_box();
     return x() - box.width / 2;
 }
 
-float entity::right() const noexcept {
+float Entity::right() const noexcept {
     auto box = get_bounding_box();
     return x() + box.width / 2;
 }
 
-float entity::top() const noexcept {
+float Entity::top() const noexcept {
     auto box = get_bounding_box();
     return y() - box.height / 2;
 }
 
-float entity::bottom() const noexcept {
+float Entity::bottom() const noexcept {
     auto box = get_bounding_box();
     return y() + box.height / 2;
 }
 
-float entity::x() const noexcept { return sprite.getPosition().x;}
-float entity::y() const noexcept { return sprite.getPosition().y;}
+float Entity::x() const noexcept { return sprite.getPosition().x;}
+float Entity::y() const noexcept { return sprite.getPosition().y;}

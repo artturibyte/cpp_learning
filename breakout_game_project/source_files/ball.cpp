@@ -2,9 +2,9 @@
 #include    "constants.hpp"
 
 //Initialize static data
-sf::Texture ball::texture;
+sf::Texture Ball::texture;
 
-ball::ball(float x, float y) {
+Ball::Ball(float x, float y) {
     // load texture
     texture.loadFromFile("ball.png");
     sprite.setTexture(texture);
@@ -14,11 +14,11 @@ ball::ball(float x, float y) {
     velocity = {constants::ball_speed, constants::ball_speed};
 }
 
-void ball::update() {
+void Ball::update() {
     // Move position
     sprite.move(velocity);
 
-    // Check that if the ball has moved over the boundaries of the window,
+    // Check that if the Ball has moved over the boundaries of the window,
     // change its direction to opposite.
     if (x() < 0 || x() > constants::window_width) {
         velocity.x = -velocity.x;
@@ -29,22 +29,22 @@ void ball::update() {
     }
 };
 
-void ball::draw(sf::RenderWindow& window) {
+void Ball::draw(sf::RenderWindow& window) {
     window.draw(sprite);
 };
 
-void ball::move_up() noexcept {
+void Ball::move_up() noexcept {
     velocity.y = -constants::ball_speed;
 }
 
-void ball::move_left() noexcept {
+void Ball::move_left() noexcept {
     velocity.x = -constants::ball_speed;
 }
 
-void ball::move_right() noexcept {
+void Ball::move_right() noexcept {
     velocity.x = constants::ball_speed;
 }
 
-void ball::move_down() noexcept {
+void Ball::move_down() noexcept {
     velocity.y = constants::ball_speed;
 }

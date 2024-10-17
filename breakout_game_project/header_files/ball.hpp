@@ -4,7 +4,7 @@
 #include    "constants.hpp"
 #include    "entity.hpp"
 
-class ball: public moving_entity {
+class Ball: public Moving_entity {
     private:
     static sf::Texture texture;
 
@@ -15,7 +15,7 @@ class ball: public moving_entity {
     // SFML uses computer graphics convention,
     // (0, 0) is top left corner of the screen.
     // x to the right, y to downwards.
-    ball(float x, float y);
+    Ball(float x, float y);
 
     // Implement pure virtual functions of entity
     void update() override;
