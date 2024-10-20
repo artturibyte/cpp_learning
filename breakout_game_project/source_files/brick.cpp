@@ -13,7 +13,22 @@ Brick::Brick(float x, float y) {
     sprite.setOrigin(get_center());
 }
 
-void Brick::update() {}
+void Brick::weaken() {
+    strength--;
+}
+
+void Brick::set_strength(int s){strength = s;};
+
+bool Brick::is_too_weak() {return strength == 0;}
+
+void Brick::update() {
+    if (strength==2) {
+        sprite.setColor(sf::Color{255, 255,  255, 255});
+    }
+    else if (strength==1) {
+        sprite.setColor(sf::Color{255, 255, 255 , 155});
+    }
+}
 
 void Brick::draw(sf::RenderWindow& window){
     window.draw(sprite);

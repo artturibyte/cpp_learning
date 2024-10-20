@@ -24,8 +24,11 @@ void Ball::update() {
         velocity.x = -velocity.x;
     }
     // Check also for y direction
-    if (y() < 0 || y() > constants::window_height) {
+    if (y() < 0) {
         velocity.y = -velocity.y;
+    }
+    if (y() > constants::window_height) {
+        destroy();
     }
 };
 

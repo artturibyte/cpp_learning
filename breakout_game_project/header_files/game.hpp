@@ -10,7 +10,7 @@
 #include    "paddle.hpp"
 #include    "brick.hpp"
 
-enum class game_state{paused, running};
+enum class game_state{paused, running, game_over, game_won};
 
 // Use aliases to simplify the code
 using entity_vector = std::vector<std::unique_ptr<Entity>>;
@@ -91,6 +91,10 @@ class Game {
     EntityManager manager;
 
     game_state state{game_state::running};
+
+    sf::Font sf_font;
+    sf::Text text_state, text_lives;
+    int lives{constants::lives};
 
     public:
         Game();
