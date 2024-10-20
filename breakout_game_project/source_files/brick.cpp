@@ -13,9 +13,7 @@ Brick::Brick(float x, float y) {
     sprite.setOrigin(get_center());
 }
 
-void Brick::update() {
-    
-}
+void Brick::update() {}
 
 void Brick::draw(sf::RenderWindow& window){
     window.draw(sprite);

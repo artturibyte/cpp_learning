@@ -14,7 +14,7 @@ struct constants
     static constexpr int brick_height{20};
     static constexpr int brick_width{69};
     static constexpr int brick_offset{0};
-    static constexpr int brick_colums{16};
+    static constexpr int brick_columns{16};
     static constexpr int brick_rows{15};
 };
 
