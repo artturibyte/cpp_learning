@@ -1,6 +1,7 @@
 #include    "game.hpp"
 #include    "interactions.hpp"
 
+
 // Function to scan all entities and clean up the destroyed ones
 void EntityManager::refresh() {
 	// We must clean up the alias pointers first, to avoid dangling pointers
@@ -46,17 +47,32 @@ void EntityManager::draw(sf::RenderWindow& window) {
 Game::Game() {
     reset();
     game_window.setFramerateLimit(60);
+
+	sf_font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf");
+	text_state.setFont(sf_font);
+	text_state.setCharacterSize(55);
+	text_state.setFillColor(sf::Color::Yellow);
+	text_state.setPosition(constants::window_width/2 - 50,constants::window_height/2);
+	//text_state.setString("Paused");
+
+	text_lives.setFont(sf_font);
+	text_lives.setCharacterSize(35);
+	text_lives.setFillColor(sf::Color::Black);
+	text_lives.setPosition(0, 0);
+	text_lives.setString("Lives:" + std::to_string(lives));
 };
 
 void Game::reset() {
+	lives = constants::lives;
     state = game_state::paused;
 
 	// Destroy all the entities and re-create them
 	manager.clear();
 
     manager.create<background>(0, 0);
-    manager.create<Ball>(constants::window_width/2, constants::window_height/2 + 20);
-    manager.create<Paddle>(0, constants::window_height);
+	// Create ball above paddle
+    manager.create<Ball>(constants::window_width/2, constants::window_height - 50);
+    manager.create<Paddle>(constants::window_width/2, constants::window_height);
 
     // Init brick vector
     	for (int i = 0; i < constants::brick_columns; ++i) {
@@ -131,9 +147,47 @@ void Game::run() {
 			manager.refresh();
         }
 
-        // Display the updated graphics
+		// Display the updated graphics
 		manager.draw(game_window);
+		
 
-        game_window.display();   
-    }
+		if (state != game_state::running) {
+			switch (state)
+			{
+			case game_state::paused:
+				text_state.setString("PAUSED");
+				break;
+			
+			case game_state::game_over:
+				text_state.setString("Game over!");
+				break;
+			
+			case game_state::game_won:
+				text_state.setString("Game won!!");
+				break;
+			
+			default:
+				break;
+			}
+			game_window.draw(text_state);
+		}
+		else {
+			if (manager.get_all<Ball>().empty()) {
+				manager.create<Ball>(constants::window_width/2, constants::window_height/2);
+				lives--;
+			}
+			
+			// player wons
+			if (manager.get_all<Brick>().empty())
+				state = game_state::game_won;
+			
+			if (lives <= 0)
+				state = game_state::game_over;
+			// Update game lives
+			text_lives.setString("Lives:" + std::to_string(lives));
+		game_window.draw(text_lives);    
+    	}
+		
+	game_window.display();
+	}
 }
