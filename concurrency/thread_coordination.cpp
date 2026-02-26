@@ -1,5 +1,7 @@
 
-// simulation of download program
+// simulation of download program, where one thread is fetching data and other is displaying
+//progress bar. After success, process_data thread has waited for finish and processes data.
+// see better solution with "condition variables".
 
 #include <iostream>
 #include <mutex>
@@ -22,7 +24,7 @@ std::mutex completed_mutex;
 void fetch_data() {
     for (int i = 0; i < 5; i++)
     {
-        std::cout<<"Fether thread waiting for data..."<<std::endl;
+        std::cout<<"Fetcher thread waiting for data..."<<std::endl;
         std::this_thread::sleep_for(2s);
 
         // updata data, then notify progress bar thread
